@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<!-- Настройка для Apple (iPhone) — запускать как приложение -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Моё Приложение">
+
+<!-- Настройка для Android (Chrome) — скрывать интерфейс браузера -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#121212">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scaner</title>
+    <style>
+        /* Стили для того, чтобы сайт выглядел как приложение на телефоне */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .app-container {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            width: 90%;
+            max-width: 360px;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: #2a2a2a;
+            color: #fff;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:active {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <h2>Моя Программа</h2>
+        
+        <!-- Поле ввода (в Python это был input()) -->
+        <input type="text" id="userInput" placeholder="Введите данные сюда...">
+        
+        <!-- Кнопка запуска логики -->
+        <button onclick="startLogic()">Запустить</button>
+        
+        <!-- Сюда будет выводиться результат (в Python это был print()) -->
+        <div class="result" id="output"></div>
+    </div>
+
+    <!-- Место для Части 2 (скрипта) -->
+    <script>
+function startLogic() {
+    // 1. Получаем то, что пользователь ввёл в поле (В Python это: x = input())
+    let inputValue = document.getElementById("userInput").value;
+    
+    // Получаем элемент, куда будем выводить ответ (В Python это: print())
+    let outputDiv = document.getElementById("output");
+
+    // ПРОВЕРКА: Если поле пустое, просим заполнить
+    if (inputValue.trim() === "") {
+        outputDiv.style.color = "#dc3545"; // Красный цвет для ошибки
+        outputDiv.innerHTML = "Ошибка: Вы ничего не ввели!";
+        return;
+    }
+
+    // 2. ЗДЕСЬ НАЧИНАЕТСЯ ВАША ЛОГИКА ИЗ PYTHON
+    // (Для примера: программа просто здоровается и считает длину слова)
+    let resultText = "Привет! Вы ввели: " + inputValue + "<br>" + 
+                     "В этом слове букв: " + inputValue.length;
+
+    // 3. Выводим результат на экран телефона
+    outputDiv.style.color = "#28a745"; // Зелёный цвет для успеха
+    outputDiv.innerHTML = resultText;
+}
+
+    </script>
+
+</body>
+</html>
